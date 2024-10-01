@@ -24,7 +24,12 @@ Q = np.zeros((len(states), len(actions)))
 
 # Mapping functions
 def state_to_index(state):
-    return states.index(state)
+    try:
+        return states.index(state)
+    except ValueError:
+        print(f"State {state} not found in states list.")
+        return None  
+
 
 def is_valid_move(state, action):
     i, j = state
